@@ -1,6 +1,6 @@
 set(ARCHCFLAGS          "-mlong-calls -Wstrict-prototypes -Wno-attributes -Wno-unknown-pragmas -Wno-psabi")
 set(ARCHCPUFLAGS        "-mlittle-endian -march=armv7-m -mtune=cortex-m3 -mfloat-abi=soft -mfloat-abi=soft -mthumb -Wa,-mthumb -Wa,-mimplicit-it=always")
-set(ARCHCXXFLAGS        "-Wno-attributes -Wno-unknown-pragmas -nostdinc++ -Wno-psabi -fno-exceptions -fcheck-new -fno-rtti")
+set(ARCHCXXFLAGS        "-mlong-calls -Wno-attributes -Wno-unknown-pragmas -nostdinc++ -Wno-psabi -fno-exceptions -fcheck-new -fno-rtti")
 set(ARCHPICFLAGS        "-fpic -msingle-pic-base -mpic-register=r10")
 set(ARCHWARNINGS        "")
 set(ARCHWARNINGSXX      "")
