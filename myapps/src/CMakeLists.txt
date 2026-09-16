@@ -6,34 +6,34 @@ target_link_options(my_app PRIVATE
     ${LDMODULEFLAGS}
     -e main
     -T${LINKER_SCRIPT}
-    -L${NUTTX_PATH}/libs
+    -L${NUTTX_EXPORT_DIR}/libs
 )
 
 target_link_options(my_appcxx PRIVATE
     ${LDMODULEFLAGS}
     -e main
     -T${LINKER_SCRIPT}
-    -L${NUTTX_PATH}/libs
+    -L${NUTTX_EXPORT_DIR}/libs
 )
 
 target_link_options(lvgldemo PRIVATE
     ${LDMODULEFLAGS}
     -e main
     -T${LINKER_SCRIPT}
-    -L${NUTTX_PATH}/libs
+    -L${NUTTX_EXPORT_DIR}/libs
 )
 
 function(target_add_symtab target)
     add_custom_command(
         TARGET ${target} POST_BUILD
-        COMMAND cat ${NUTTX_PATH}/System.map | sed -e "s/\r//g" > System.map
-        COMMAND ${NUTTX_PATH}/scripts/mkdefines.sh System.map "${target}" > defines.ld
+        COMMAND cat ${NUTTX_EXPORT_DIR}/System.map | sed -e "s/\r//g" > System.map
+        COMMAND ${NUTTX_EXPORT_DIR}/scripts/mkdefines.sh System.map "${target}" > defines.ld
         COMMAND ${CMAKE_LINKER}
                 ${LDMODULEFLAGS}
                 -e main
                 -T defines.ld
                 -T${LINKER_SCRIPT}
-                -L${NUTTX_PATH}/libs
+                -L${NUTTX_EXPORT_DIR}/libs
                 -o ${target}_tmp ${target}
         COMMAND ${CMAKE_STRIP} --strip-unneeded ${target}_tmp
         COMMAND rm -f ${target}
