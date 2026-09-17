@@ -1,1 +1,1 @@
-{ "adbd", 100, 4096, adbd_main },
+{ "adbd", 100, 2048, adbd_main },

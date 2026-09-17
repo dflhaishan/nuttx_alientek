@@ -13,8 +13,7 @@ set(CMAKE_C_FLAGS "${ARCHCPUFLAGS} ${ARCHCFLAGS} -D__NuttX__")
 set(CMAKE_CXX_FLAGS "${ARCHCPUFLAGS} ${ARCHCXXFLAGS} -D__NuttX__")
 
 set(CMAKE_C_STANDARD_INCLUDE_DIRECTORIES ${NUTTX_PATH}/include
-                                         ${NUTTX_PATH}/arch/chip
-                                         ${NUTTX_PATH}/include/lvgl)
+                                         ${NUTTX_PATH}/arch/chip)
 
 set(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES
     ${NUTTX_PATH}/include/${NUTTX_CXX} ${NUTTX_PATH}/include
@@ -25,13 +24,13 @@ add_compile_options(-ffunction-sections -fdata-sections)
 
 # same entry used for all build modes in crt0.c
 
-set(ENTRY_NAME "_start")
+# set(ENTRY_NAME "_start")
 
 # set(CMAKE_C_LINK_EXECUTABLE
-#     "<CMAKE_LINKER> ${LDMODULEFLAGS} --entry=${ENTRY_NAME} -T${LINKER_SCRIPT} <OBJECTS> -o <TARGET> <LINK_LIBRARIES> -L${NUTTX_PATH}/libs"
+#     "<CMAKE_LINKER> ${LDFLAGS} --entry=${ENTRY_NAME} -T${LINKER_SCRIPT} <OBJECTS> -o <TARGET> <LINK_LIBRARIES> -L${NUTTX_PATH}/libs --start-group ${LDLIBS} ${EXTRA_LIBS} --end-group"
 # )
 # set(CMAKE_CXX_LINK_EXECUTABLE
-#     "<CMAKE_LINKER> ${LDMODULEFLAGS} --entry=${ENTRY_NAME} -T${LINKER_SCRIPT} <OBJECTS> -o <TARGET> <LINK_LIBRARIES> -L${NUTTX_PATH}/libs"
+#     "<CMAKE_LINKER> ${LDFLAGS} --entry=${ENTRY_NAME} -T${LINKER_SCRIPT} <OBJECTS> -o <TARGET> <LINK_LIBRARIES> -L${NUTTX_PATH}/libs --start-group ${LDLIBS} ${EXTRA_LIBS} --end-group"
 # )
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)

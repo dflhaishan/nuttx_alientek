@@ -23,6 +23,10 @@ target_link_options(lvgldemo PRIVATE
     -L${NUTTX_EXPORT_DIR}/libs
 )
 
+target_include_directories(lvgldemo PRIVATE
+    ${NUTTX_EXPORT_DIR}/include/lvgl
+)
+
 function(target_add_symtab target)
     add_custom_command(
         TARGET ${target} POST_BUILD

@@ -115,7 +115,7 @@ void lv_example_button_10(void)
     lv_obj_remove_flag(btn1, LV_OBJ_FLAG_PRESS_LOCK);
 
     label = lv_label_create(btn1);
-    lv_label_set_text(label, "Button");
+    lv_label_set_text(label, "jhs");
     // lv_obj_center(label);
 
 }
