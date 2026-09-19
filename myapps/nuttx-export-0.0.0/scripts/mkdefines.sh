@@ -41,7 +41,8 @@ fi
 # Extract all of the undefined symbols from the partially linked file and create a
 # list of sorted, unique undefined variable names.
 
-varlist=$(nm "$relprog" | grep -F ' U ' | sed -e "s/^[ ]*//g" | cut -d' ' -f2 | sort - | uniq)
+# varlist=$(nm "$relprog" | grep -F ' U ' | sed -e "s/^[ ]*//g" | cut -d' ' -f2 | sort - | uniq)
+varlist=$(nm "$relprog" | grep -E '^\s+U\s' | awk '{print $2}' | sort -u | sed -e "s/^[ ]*//g" | cut -d' ' -f2 | sort - | uniq)
 
 # Now output the linker script that provides a value for all of the undefined symbols
 
@@ -54,6 +55,20 @@ if [ -z "$map" ]; then
    exit 1
 fi
 
+# varaddr=$(echo "${map}" | cut -d' ' -f1)
+# echo "${var} = 0x${varaddr} | 0x00000001;"
+# done
 varaddr=$(echo "${map}" | cut -d' ' -f1)
-echo "${var} = 0x${varaddr} | 0x00000001;"
+vartype=$(echo "${map}" | cut -d' ' -f2)
+
+case "$vartype" in
+    T|t|W|w)
+        # 函数：加 Thumb 位
+        echo "${var} = 0x${varaddr} | 0x00000001;"
+        ;;
+    *)
+        # 数据、BSS、只读数据等：原样输出
+        echo "${var} = 0x${varaddr};"
+        ;;
+esac
 done
