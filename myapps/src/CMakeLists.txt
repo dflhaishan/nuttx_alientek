@@ -8,6 +8,7 @@ target_link_options(my_app PRIVATE
     -e main
     -T${LINKER_SCRIPT}
     -L${NUTTX_EXPORT_DIR}/libs
+    -Wl,--gc-sections
 )
 
 target_link_options(my_appcxx PRIVATE
@@ -15,6 +16,7 @@ target_link_options(my_appcxx PRIVATE
     -e main
     -T${LINKER_SCRIPT}
     -L${NUTTX_EXPORT_DIR}/libs
+    -Wl,--gc-sections
 )
 
 target_link_options(lvgldemo PRIVATE
@@ -22,6 +24,7 @@ target_link_options(lvgldemo PRIVATE
     -e main
     -T${LINKER_SCRIPT}
     -L${NUTTX_EXPORT_DIR}/libs
+    -Wl,--gc-sections
 )
 
 target_include_directories(lvgldemo PRIVATE
