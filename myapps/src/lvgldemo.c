@@ -34,6 +34,8 @@
 #include <uv.h>
 #endif
 
+#include "lv_music/music_func.h"
+
 /****************************************************************************
  * Pre-processor Definitions
  ****************************************************************************/
@@ -105,20 +107,6 @@ static void lv_nuttx_uv_loop(uv_loop_t *loop, lv_nuttx_result_t *result)
  *   Zero on success; a positive, non-zero value on failure.
  *
  ****************************************************************************/
-
-void lv_example_button_10(void)
-{
-    lv_obj_t * label;
-
-    lv_obj_t * btn1 = lv_button_create(lv_screen_active());
-    lv_obj_align(btn1, LV_ALIGN_CENTER, 0, -40);
-    lv_obj_remove_flag(btn1, LV_OBJ_FLAG_PRESS_LOCK);
-
-    label = lv_label_create(btn1);
-    lv_label_set_text(label, "jhs");
-    // lv_obj_center(label);
-
-}
  
 int main(int argc, FAR char *argv[])
 {
@@ -171,7 +159,7 @@ int main(int argc, FAR char *argv[])
 
 //       goto demo_end;
 //     }
-    lv_example_button_10();
+    lv_apps_creat();
 
 #ifdef CONFIG_LV_USE_NUTTX_LIBUV
   lv_nuttx_uv_loop(&ui_loop, &result);

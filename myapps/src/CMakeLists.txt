@@ -1,6 +1,7 @@
 add_executable(my_app hello_main.c)
 add_executable(my_appcxx hello_main.cxx test.cxx)
-add_executable(lvgldemo lvgldemo.c)
+add_executable(lvgldemo lvgldemo.c 
+               lv_music/music_app.c lv_music/music_func.c lv_music/music_list.c lv_music/music_res.c)
 
 target_link_options(my_app PRIVATE
     ${LDMODULEFLAGS}
