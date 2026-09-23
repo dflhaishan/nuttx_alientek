@@ -1,7 +1,10 @@
 add_executable(my_app hello_main.c)
 add_executable(my_appcxx hello_main.cxx test.cxx)
-add_executable(lvgldemo lvgldemo.c 
-               lv_music/music_app.c lv_music/music_func.c lv_music/music_list.c lv_music/music_res.c)
+add_executable(lvgldemo lvgldemo.c
+                        lv_music/music_app.c
+                        lv_music/music_func.c
+                        lv_music/music_list.c
+                        lv_music/music_res.c)
 
 target_link_options(my_app PRIVATE
     ${LDMODULEFLAGS}
@@ -34,7 +37,7 @@ target_include_directories(lvgldemo PRIVATE
 function(target_add_symtab target)
     add_custom_command(
         TARGET ${target} POST_BUILD
-        COMMAND cat ${NUTTX_EXPORT_DIR}/System.map | sed -e "s/\r//g" > System.map
+        COMMAND cat ${NUTTX_EXPORT_DIR}/System.map | sed -e "s/\\r//g" > System.map
         COMMAND ${NUTTX_EXPORT_DIR}/scripts/mkdefines.sh System.map "${target}" > defines.ld
         COMMAND ${CMAKE_LINKER}
                 ${LDMODULEFLAGS}

@@ -107,7 +107,6 @@ static void lv_nuttx_uv_loop(uv_loop_t *loop, lv_nuttx_result_t *result)
  *   Zero on success; a positive, non-zero value on failure.
  *
  ****************************************************************************/
- 
 int main(int argc, FAR char *argv[])
 {
   lv_nuttx_dsc_t info;

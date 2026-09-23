@@ -76,6 +76,8 @@ void lv_demo_music_album_next(bool next);
 
 void lv_demo_music_pause(void);
 
+void lv_demo_music_resume(void);
+
 void lv_apps_creat(void);
 
 #endif

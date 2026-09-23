@@ -1,6 +1,6 @@
 #include "music_func.h"
 
-static void auto_step_cb(lv_timer_t * t);
+// static void auto_step_cb(lv_timer_t * t);
 
 static lv_obj_t * ctrl;
 static lv_obj_t * list;
@@ -10,9 +10,9 @@ void lv_apps_creat(void)
     lv_obj_set_style_bg_color(lv_screen_active(), lv_color_hex(0x343247), 0);
     list = lv_demo_music_list_create(lv_screen_active());
     ctrl = lv_demo_music_main_create(lv_screen_active());
-    lv_timer_create(auto_step_cb, 1000, NULL);
+    // lv_timer_create(auto_step_cb, 1000, NULL);
 }
-
+#if 0
 static void auto_step_cb(lv_timer_t * t)
 {
     LV_UNUSED(t);
@@ -110,3 +110,4 @@ static void auto_step_cb(lv_timer_t * t)
     }
     state++;
 }
+#endif
